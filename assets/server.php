@@ -14,6 +14,7 @@ class App {
 	}
 
 	function update($id, $title, $content){
+
 		return $this->dbReq("
 			UPDATE ad SET
 				title = '".$title."',
@@ -73,24 +74,24 @@ if ($_GET) {
 			);
 			break;
 		case "update":
-			if (!count($_GET["title"]) && count(!$_GET["content"])) return;
+			if (!count($_GET["title"]) && !count($_GET["content"])) return;
 			echo $app->update(
 				preg_replace( '/\D/', '', $_GET["id"] ),
-				htmlspecialchars($_GET["title"]),
-				htmlspecialchars($_GET["content"])
+				($_GET["title"]),
+				($_GET["content"])
 			);
 			break;
 		case "add":
-			if (!count($_GET["title"]) && count(!$_GET["content"])) return;
-			echo htmlspecialchars_decode( json_encode( $app->add(
-				htmlspecialchars($_GET["title"]),
-				htmlspecialchars($_GET["content"])
-			) ) );
+			if (!count($_GET["title"]) && !count($_GET["content"])) return;
+			echo json_encode( $app->add(
+				($_GET["title"]),
+				($_GET["content"])
+			) );
 			break;
 	}
 };
 
 if ( !count( $_GET ) ) {
-	echo htmlspecialchars_decode( json_encode( $app->getAll() ) );
+	echo  json_encode( $app->getAll() );
 };
 ?>

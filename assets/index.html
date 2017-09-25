@@ -18,16 +18,23 @@
 		<div class="adsWrappwr" item-selector=".ad" v-masonry transition-duration="0">
 			<transition-group name="ad" tag="div">
 				<div class="ad" v-for="(item, index) in ads" v-bind:key="index" v-masonry-tile>
-					<h2 class="title" v-show="item.title">{{ item.title }}</h2>
-					<div class="content" v-show="item.content">{{ item.content }}</div>
-					<div class="buttonRed" @click="remove(index)">Удалить</div>
+					<h2 class="title" v-show="!item.edit && item.title ">{{ item.title }}</h2>
+					<div class="content" v-show="!item.edit && item.content" v-html="item.content"></div>
+
+					<input type="text" v-model="item.editFields.title" placeholder="Название" v-show="item.edit">
+					<textarea placeholder="Описание" v-model="item.editFields.content" v-show="item.edit"></textarea>
+
+					<div class="buttonBlue" @click="edit(index)" v-show="!item.edit">Редактировать</div>
+					<div class="buttonGreen" @click="save(index)" v-show="item.edit">Сохранить</div>
+					<div class="buttonRed" @click="cancelEdit(index)" v-show="item.edit">Отменить</div>
+					<div class="buttonRed" @click="remove(index)" v-show="!item.edit">Удалить</div>
 				</div>
 			</transition-group>
 			<div v-show="!ads.length" class="listEmpty">Список объявлений пуст</div>
 		</div>
 		<div class="addField">
 			<input type="text" id="addTitle" placeholder="Название" v-model="newName">
-			<textarea id="addContent" placeholder="Описание" v-model="newContent"></textarea>
+			<textarea id="addContent" placeholder="Описание (Поддержка markdown) ![alt](ссылка//на.фото 'Название')" v-model="newContent"></textarea>
 			<div class="buttonBlue" @click="addAD" :class="{deactivated: !(newName.length || newContent.length)}">Добавить</div>
 		</div>
 	</section>

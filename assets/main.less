@@ -5,6 +5,18 @@ body {
 	color: #4d4d4d;
 }
 
+input[type="text"] {
+	font-size: 24px;
+}
+
+input[type="text"],
+textarea {
+	margin: 10px 0;
+	box-sizing: border-box;
+	padding: 10px;
+	width: 100%;
+}
+
 header h1 {
 	color: rgba(175, 47, 47, 0.15);
 	text-align: center;
@@ -40,6 +52,11 @@ header h1 {
 	background: #7289da;
 }
 
+.buttonGreen {
+	.button;
+	background: #43b581;
+}
+
 .deactivated {
 	opacity: 0.5;
 	pointer-events: none;
@@ -59,8 +76,7 @@ header h1 {
 		transition: all 0.3s ease-in-out;
 		background: #fff;
 		margin: 10px;
-		min-width: 350px;
-		width: ~"calc(30% - 40px)";
+		width: 450px;
 		padding: 10px 20px;
 		box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2);
 
@@ -72,7 +88,8 @@ header h1 {
 		.content {
 			text-indent: 1.5em;
 			text-align: justify;
-			margin-bottom: 5px;
+			margin-bottom: 15px;
+			text-align-last: left;
 		}
 
 		.buttonRed {
@@ -82,7 +99,7 @@ header h1 {
 
 	.ad-enter-active,
 	.ad-leave-active {
-		transition: all 0.3s;
+		transition: all 0.2s;
 	}
 
 	.ad-enter,
@@ -97,18 +114,6 @@ header h1 {
 	width: 600px;
 	padding: 10px 20px 45px;
 	box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.2);
-
-	input[type="text"] {
-		font-size: 24px;
-	}
-
-	input[type="text"],
-	textarea {
-		margin: 10px 0;
-		box-sizing: border-box;
-		padding: 10px;
-		width: 100%;
-	}
 
 	.buttonBlue {
 		float: right;

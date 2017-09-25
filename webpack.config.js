@@ -8,17 +8,16 @@ module.exports = {
     entry: {
         main: './main.js',
     },
-    watch: true,
     output: {
         path: path.join(__dirname, 'assets'),
         filename: '[name].js'
     },
     plugins: [
-        /*
+		/*
         new UglifyJSPlugin({
         	minimize: true
         })
-        */
+		*/
     ],
     resolve: {
         alias: {
